@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registre des Enfants des Martyrs de l'UDPS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, #0057b8, #0075e1);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .btn-lang {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-lang:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .content {
+            padding: 2rem;
+            background: 
+                linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+                url('images/udps-marche.jpg') center center/cover no-repeat;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Optional: Add a semi-transparent overlay for readability */
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.15);
+            z-index: 0;
+        }
+        .content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 5px solid #0057b8;
+        }
+
+        .intro h2 {
+            color: #0057b8;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro h2 i {
+            margin-right: 10px;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #fafafa;
+            transition: all 0.3s;
+        }
+
+        fieldset:hover {
+            border-color: #0075e1;
+            box-shadow: 0 0 15px rgba(0, 117, 225, 0.1);
+        }
+
+        legend {
+            font-weight: bold;
+            color: #0057b8;
+            padding: 0 15px;
+            font-size: 1.2rem;
+            width: auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #0075e1;
+            box-shadow: 0 0 8px rgba(0, 117, 225, 0.3);
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-group input, .checkbox-group input {
+            margin-right: 8px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(to right, #0057b8, #0075e1);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 87, 184, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 87, 184, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .required {
+            color: #e22;
+        }
+
+        .help-text {
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .radio-group, .checkbox-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        .confirmation {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .confirmation i {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .whatsapp-info {
+            background: #25D366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="language-toggle">
+                <button class="btn-lang">FR</button>
+                <button class="btn-lang">EN</button>
+            </div>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="images/logo-martyrs-udps.png" alt="UDPS Logo" style="width: 70px; height: 70px; object-fit: contain;">
+                </div>
+                <h1>Registre des Enfants des Martyrs de l'UDPS</h1>
+            </div>
+            <p class="subtitle">Un hommage aux luttes et aux sacrifices des membres et sympathisants de l'UDPS</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <h2><i class="fas fa-info-circle"></i> Important</h2>
+                <p>Ce formulaire est dédié à la mémoire des femmes et des hommes qui ont perdu la vie pour leur engagement en faveur de la démocratie et des idéaux de l'UDPS. En enregistrant leurs descendants, nous nous assurons que leur sacrifice n'est jamais oublié et que leur héritage est préservé.</p>
+                <p><strong><i class="fas fa-shield-alt"></i> Vos informations seront traitées avec la plus stricte confidentialité.</strong></p>
+                <div class="whatsapp-info">
+                    <i class="fab fa-whatsapp"></i> Les données seront envoyées via WhatsApp au +243 831 700 110
+                </div>
+            </div>
+
+            <form id="registrationForm">
+                <!-- Section A: Information sur le Parent Décédé -->
+                <div class="form-section">
+                    <h2><i class="fas fa-user-circle"></i> Information sur le Parent Décédé</h2>
+                    
+                    <div class="form-group">
+                        <label for="parentFirstName">Prénom du Parent <span class="required">*</span></label>
+                        <input type="text" id="parentFirstName" name="parentFirstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parentLastName">Nom de Famille du Parent <span class="required">*</span></label>
+                        <input type="text" id="parentLastName" name="parentLastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parentAliases">Autres Noms Connus (Surnoms, Pseudonymes)</label>
+                        <input type="text" id="parentAliases" name="parentAliases" placeholder="Noms utilisés pendant la lutte">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Statut <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="status" value="Membre" required> Membre de l'UDPS
+                            </label>
+                            <label>
+                                <input type="radio" name="status" value="Sympathisant"> Sympathisant
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deathDate">Date du Décès (ou approximation)</label>
+                        <input type="date" id="deathDate" name="deathDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deathPlace">Lieu du Décès (Ville, Pays) <span class="required">*</span></label>
+                        <input type="text" id="deathPlace" name="deathPlace" required placeholder="Kinshasa, République Démocratique du Congo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="circumstances">Circonstances du Décès <span class="required">*</span></label>
+                        <textarea id="circumstances" name="circumstances" rows="4" required placeholder="Décrivez brièvement ce qui est arrivé..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="politicalRole">Rôle ou Activité Politique</label>
+                        <textarea id="politicalRole" name="politicalRole" rows="3" placeholder="Fonction au sein du parti, activités spécifiques..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Section B: Information sur l'Enfant -->
+                <div class="form-section">
+                    <h2><i class="fas fa-child"></i> Information sur l'Enfant</h2>
+                    
+                    <div class="form-group">
+                        <label for="childFirstName">Prénom de l'Enfant <span class="required">*</span></label>
+                        <input type="text" id="childFirstName" name="childFirstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childLastName">Nom de Famille de l'Enfant <span class="required">*</span></label>
+                        <input type="text" id="childLastName" name="childLastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childDob">Date de Naissance <span class="required">*</span></label>
+                        <input type="date" id="childDob" name="childDob" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childBirthPlace">Lieu de Naissance (Ville, Pays) <span class="required">*</span></label>
+                        <input type="text" id="childBirthPlace" name="childBirthPlace" required placeholder="Kinshasa, République Démocratique du Congo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childPhone">Numéro de Téléphone</label>
+                        <input type="tel" id="childPhone" name="childPhone" placeholder="+243 XX XXX XX XX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childEmail">Adresse E-mail <span class="required">*</span></label>
+                        <input type="email" id="childEmail" name="childEmail" required placeholder="votre@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childAddress">Adresse Actuelle Complète <span class="required">*</span></label>
+                        <textarea id="childAddress" name="childAddress" rows="3" required placeholder="Rue, Ville, Code Postal, Pays"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="childNationality">Nationalité(s) <span class="required">*</span></label>
+                        <input type="text" id="childNationality" name="childNationality" required placeholder="ex: Congolaise, Belge">
+                    </div>
+                </div>
+
+                <!-- Section C: Preuve et Vérification -->
+                <div class="form-section">
+                    <h2><i class="fas fa-file-alt"></i> Preuve et Vérification</h2>
+                    
+                    <div class="form-group">
+                        <label>Votre Lien avec le Parent Décédé <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="relation" value="Enfant Biologique" required> Enfant Biologique
+                            </label>
+                            <label>
+                                <input type="radio" name="relation" value="Enfant Adopté"> Enfant Adopté
+                            </label>
+                            <label>
+                                <input type="radio" name="relation" value="Autre"> Autre
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referenceName">Nom de la Personne Référence <span class="required">*</span></label>
+                        <input type="text" id="referenceName" name="referenceName" required placeholder="Nom complet d'un témoin ou référent">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referenceContact">Coordonnées de la Référence (Téléphone ou Email) <span class="required">*</span></label>
+                        <input type="text" id="referenceContact" name="referenceContact" required placeholder="Téléphone ou email pour contacter la référence">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="documents">Documents Justificatifs (à joindre)</label>
+                        <p class="help-text">Vous pouvez sélectionner plusieurs fichiers. Formats acceptés: PDF, JPG, PNG.</p>
+                        <input type="file" id="documents" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <span>En soumettant ce formulaire, je certifie que les informations fournies sont exactes. J'autorise le traitement de ces données pour la création du registre officiel en hommage aux martyrs de l'UDPS. <span class="required">*</span></span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fab fa-whatsapp"></i> Envoyer via WhatsApp
+                </button>
+            </form>
+
+            <div id="confirmation" class="confirmation">
+                <i class="fas fa-check-circle"></i>
+                <h2>Merci pour votre soumission</h2>
+                <p>Votre formulaire a été enregistré avec succès. Un membre de notre commission vous contactera pour confirmer la réception et pour toute étape supplémentaire.</p>
+                <p>Nous vous remercions de contribuer à préserver la mémoire des martyrs de l'UDPS.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Union pour la Démocratie et le Progrès Social (UDPS). Tous droits réservés.</p>
+            <p>Commission des Martyrs et des Victimes de la Lutte.</p>
+            <p>Contact: <a href="https://www.martyrs.udps.com" target="_blank">www.martyrs.udps.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const confirmation = document.getElementById('confirmation');
+            
+            // Handle form submission
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Basic form validation
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = 'red';
+                    } else {
+                        field.style.borderColor = '';
+                    }
+                });
+                
+                if (!isValid) {
+                    alert('Veuillez remplir tous les champs obligatoires.');
+                    return;
+                }
+                
+                // Collect form data
+                const formData = new FormData(form);
+                const formObject = Object.fromEntries(formData.entries());
+                
+                // Format the message for WhatsApp
+                const whatsappMessage = formatWhatsAppMessage(formObject);
+                
+                // Encode the message for URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                
+                // WhatsApp number (with country code, without +)
+                const whatsappNumber = '243831700110';
+                
+                // Create WhatsApp URL
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                // Open WhatsApp in a new tab
+                window.open(whatsappURL, '_blank');
+                
+                // Show confirmation message
+                form.style.display = 'none';
+                confirmation.style.display = 'block';
+                
+                // Scroll to confirmation
+                confirmation.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Format the WhatsApp message
+            function formatWhatsAppMessage(data) {
+                return `Nouvelle inscription au Registre des Enfants des Martyrs de l'UDPS
+
+*INFORMATIONS SUR LE PARENT DÉCÉDÉ:*
+- Nom complet: ${data.parentFirstName} ${data.parentLastName}
+- Autres noms: ${data.parentAliases || 'Non spécifié'}
+- Statut: ${data.status}
+- Date de décès: ${data.deathDate || 'Non spécifiée'}
+- Lieu de décès: ${data.deathPlace}
+- Circonstances: ${data.circumstances}
+- Rôle politique: ${data.politicalRole || 'Non spécifié'}
+
+*INFORMATIONS SUR L'ENFANT:*
+- Nom complet: ${data.childFirstName} ${data.childLastName}
+- Date de naissance: ${data.childDob}
+- Lieu de naissance: ${data.childBirthPlace}
+- Téléphone: ${data.childPhone || 'Non spécifié'}
+- Email: ${data.childEmail}
+- Adresse: ${data.childAddress}
+- Nationalité: ${data.childNationality}
+
+*INFORMATIONS DE VÉRIFICATION:*
+- Lien avec le parent: ${data.relation}
+- Référence: ${data.referenceName}
+- Contact de la référence: ${data.referenceContact}
+
+*SOUMIS PAR:*
+- Nom: ${data.submitterName || 'Non spécifié'}
+- Relation: ${data.submitterRelation || 'Non spécifiée'}
+
+*REMARQUE:* Cette soumission a été faite via le formulaire en ligne.`;
+            }
+            
+            // Language toggle buttons
+            const langButtons = document.querySelectorAll('.btn-lang');
+            langButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Fonctionnalité de changement de langue à implémenter.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
